@@ -9,8 +9,7 @@ import Header from "./_components/Header";
 const Profile = () => {
   return (
     <>
-      <Header />
-      <div className="my-6 w-full px-10 pt-[7.5rem]">
+      <div className="my-1 w-full px-10 pt-[7.5rem]">
         <h2 className="font-bold text-2xl mb-5 ml-1">Profile</h2>
         <UserProfile routing="hash">
           <UserButton.UserProfilePage

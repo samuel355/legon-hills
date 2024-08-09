@@ -67,128 +67,21 @@ const HeaderAlt = () => {
 
         <NavigationMenuList className="hidden md:hidden lg:flex items-center gap-2 ml-10">
           <NavigationMenuItem>
-            <ListItem href={"/"} title={"Home"}>
-              Home
-            </ListItem>
-          </NavigationMenuItem>
-
-          <NavigationMenuItem>
-            <NavigationMenuTrigger
-              className={`flex border-0 items-center hover:text-primary text-base ${
-                (path === "/nthc" && "text-primary font-extrabold") ||
-                (path === "/dar-es-salaam" && "text-primary font-extrabold") ||
-                (path === "/trabuom" && "text-primary font-extrabold")
-              }`}
-            >
-              Our Sites
-            </NavigationMenuTrigger>
-            <NavigationMenuContent className="">
-              <ul className="grid gap-3 p-3 py-5 md:w-[200px] lg:w-[230px] xl:w-[240px] grid-cols-1">
-                <ListItem href="/nthc" title="NTHC">
-                  NTHC (Kwadaso)
-                </ListItem>
-                <ListItem href="/dar-es-salaam" title="Dar Es Salaam">
-                  Dar Es Salaam (Ejisu)
-                </ListItem>
-                <ListItem href="/trabuom" title="Trabuom">
-                  Trabuom
-                </ListItem>
-                <ListItem href="/legon-hills" title="Legon Hills">
-                  Legon Hills
-                </ListItem>
-              </ul>
-            </NavigationMenuContent>
-          </NavigationMenuItem>
-
-          <NavigationMenuItem>
-            <ListItem href={"/get-plot"} title={"Get Plot"}>
+            <ListItem href={"/"} title={"Get Plot"}>
               Get Land
             </ListItem>
           </NavigationMenuItem>
 
           <NavigationMenuItem>
-            <ListItem href={"/get-home"} title={"Get Home"}>
-              Get Property
+            <ListItem href={"/contact-us"} title={"Contact Us"}>
+              Contact Us
             </ListItem>
           </NavigationMenuItem>
 
-
-          {/* <NavigationMenuItem>
-            <NavigationMenuTrigger
-              className={`flex border-0 items-center hover:text-primary text-base ${
-                (path === "/about-us" && "text-primary font-extrabold") ||
-                (path === "/contact-us" && "text-primary font-extrabold") ||
-                (path === "/terms-of-use" && "text-primary font-extrabold") ||
-                (path === "/services" && "text-primary font-extrabold") ||
-                (path === "/portfolio" && "text-primary font-extrabold") ||
-                (path === "/faqs" && "text-primary font-extrabold")
-              }`}
-            >
-              Pages
-            </NavigationMenuTrigger>
-            <NavigationMenuContent className="">
-              <ul className="grid gap-3 p-3 py-5 md:w-[200px] lg:w-[230px] xl:w-[240px] grid-cols-1">
-                <ListItem href="/about-us" title="About Us">
-                  About Us
-                </ListItem>
-                <ListItem href="/dar-es-salaam" title="Contact Us">
-                  Contact Us
-                </ListItem>
-                <ListItem href="/terms-of-use" title="Terms of Use">
-                  Terms of Use
-                </ListItem>
-                <ListItem href="/services" title="Services">
-                  services
-                </ListItem>
-                <ListItem href="/portfolio" title="Portfolio">
-                  Portfolio
-                </ListItem>
-                <ListItem href="/faqs" title="faqs">
-                  FAQs
-                </ListItem>
-              </ul>
-            </NavigationMenuContent>
-          </NavigationMenuItem> */}
         </NavigationMenuList>
       </NavigationMenu>
 
       <div className="lg:flex gap-4 items-center hidden">
-        <div>
-          {user && (
-            <DropdownMenu>
-              <DropdownMenuTrigger>
-                <Button className="flex gap-2">
-                  {" "}
-                  <Plus className="h-5 w-5" /> Post Property
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent className="p-3">
-                <DropdownMenuItem>
-                  <Link
-                    href={"/add-house-listing"}
-                    className={`hover:text-primary text-base ${
-                      path == "/add-house-listing" &&
-                      "text-primary font-extrabold"
-                    }`}
-                  >
-                    Add House Listing
-                  </Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem>
-                  <Link
-                    href={"/add-land-listing"}
-                    className={`hover:text-primary text-base ${
-                      path == "/add-land-listing" &&
-                      "text-primary font-extrabold"
-                    }`}
-                  >
-                    Add Land Listing
-                  </Link>
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
-          )}
-        </div>
 
         {isSignedIn ? (
           // <UserButton />

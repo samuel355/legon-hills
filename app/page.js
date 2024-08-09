@@ -1,39 +1,52 @@
 "use client";
-import Featured from "@/app/_components/Featured";
 import Footer from "@/app/_components/Footer";
-import Hero from "@/app/_components/Hero";
-import HomeFilters from "@/app/_components/HomeFilters";
-import Invests from "@/app/_components/Invests";
-import Speciality from "@/app/_components/Specialty";
-import { useRouter } from "next/navigation";
-import React, { Suspense } from "react";
-import { useEffect } from "react";
+import Map from "@/app/_components/Map";
+import { supabase } from "@/utils/supabase/client";
+import { useEffect, useState } from "react";
 import Header from "@/app/_components/Header";
 
-const Home = () => {
-  const router = useRouter();
+const page = () => {
+  const [plots, setPlots] = useState([]);
+  const [center, setCenter] = useState({
+    lng: -0.069619365360446,
+    lat: 5.71945965100958,
+  });
+
   useEffect(() => {
-    router.prefetch("/add-house-listing");
-    router.prefetch("/add-land-listing");
-    router.prefetch("/dar-es-salaam");
-    router.prefetch("/get-home");
-    router.prefetch("/get-plot");
-    router.prefetch("/nthc");
-    router.prefetch("/trabuom");
-  }, [router]);
+    getPlost();
+  }, []);
+
+  //Fetch Plots from supabase
+  const getPlost = async () => {
+    const { data, error } = await supabase.from("legon_hills").select("*");
+  
+    if (data) {
+      setPlots(data);
+
+      if (plots.length > 0) {
+        setCenter({
+          lng: plots[0].geometry.coordinates[0][0][1],
+          lat: plots[0].geometry.coordinates[0][0][0],
+        });
+      }
+    }
+    if (error) {
+      console.log(error);
+    }
+  };
+
   return (
-    <div>
-      <Header />
-      <div className="pt-[7rem]">
-        <Hero />
-        <HomeFilters />
-        <Invests />
-        <Speciality />
-        <Featured />
-        <Footer />
+    <>
+    <Header />
+      <div className="w-full mx-12 overflow-x-hidden mb-8 pt-[7.5rem]">
+        <h1 className="font-bold text-lg my-4 text-center capitalize">
+          LEGON HILLS SITE
+        </h1>
+        <Map geoJsonData={plots} parcels={plots} center={center} />
       </div>
-    </div>
+      <Footer />
+    </>
   );
 };
 
-export default Home;
+export default page;

@@ -20,6 +20,7 @@ import { supabase } from "@/utils/supabase/client";
 import { toast } from "react-toastify";
 import { toast as tToast } from "sonner";
 import { Loader } from "lucide-react";
+import { useUser } from "@clerk/nextjs";
 
 mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_TOKEN;
 
@@ -29,6 +30,7 @@ const Map = ({ parcels, center }) => {
   const [plotID, setPlotID] = useState();
   const path = usePathname();
   const [newPrice, setNewPrice] = useState("");
+  const { user, isSignedIn } = useUser();
   const [newPriceEr, setNewPriceEr] = useState(false);
 
   const [loading, setLoading] = useState(false);
@@ -132,17 +134,17 @@ const Map = ({ parcels, center }) => {
           <hr />
           <a style="display: ${
             status === "Sold" || status === "Reserved" ? "none" : "block"
-          }"  href="${path}/buy-plot/${id}" class="border px-4 py-1 mt-3 mb-1 rounded-md text-sm font-normal">
+          }"  href="/buy-plot/${id}" class="border px-4 py-1 mt-3 mb-1 rounded-md text-sm font-normal">
             Buy Plot
           </a>
 
           <a style="display: ${
             status === "Reserved" || status === "Sold" ? "none" : "block"
-          }" href="${path}/reserve-plot/${id}" id="reserve_plot_button" class="border mb-1 px-4 py-1 my-2 rounded-md text-sm font-normal">
+          }" href="/reserve-plot/${id}" id="reserve_plot_button" class="border mb-1 px-4 py-1 my-2 rounded-md text-sm font-normal">
             Reserve Plot
           </a>
 
-          <a href="${path}/edit-plot/${id}" id="edit_plot_button" class="border px-4 py-1 mb-2 rounded-md text-sm font-normal">
+          <a style= "display: ${!user && 'none'}" href="/edit-plot/${id}" id="edit_plot_button" class="border px-4 py-1 mb-2 rounded-md text-sm font-normal">
             Edit Plot
           </a>
 
@@ -150,7 +152,7 @@ const Map = ({ parcels, center }) => {
             Call For Info
           </a>
 
-          <button id="changePlotID" data-id=${id}  data-text="${text1}, ${text2}" amount="${amount}" class="bg-primary w-full py-2 mt-3 text-white" id="changePlotID">Change Plot Price</button>
+          <button style= "display: ${!user && 'none'}" id="changePlotID" data-id=${id}  data-text="${text1}, ${text2}" amount="${amount}" class="bg-primary w-full py-2 mt-3 text-white" id="changePlotID">Change Plot Price</button>
         </div>
       </div>
     `;

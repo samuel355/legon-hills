@@ -40,7 +40,7 @@ const Map = ({ parcels, center }) => {
     width: "85%",
   };
 
-  const zoom = 17;
+  const zoom = 17.3;
 
   const { isLoaded, i } = useJsApiLoader({
     id: "google-map-script",
@@ -268,9 +268,7 @@ const Map = ({ parcels, center }) => {
     }
     let database;
     //console.log(plotID)
-    if (path === "/nthc") {
-      database = "nthc";
-    }
+    database = 'legon_hills'
     if (path === "/dar-es-salaam") {
       database = "dar_es_salaam";
     }
@@ -341,7 +339,7 @@ const Map = ({ parcels, center }) => {
 
     if (data) {
       console.log(data);
-      tToast("Plot Price updated successfully");
+      tToast.success("Plot Price updated successfully");
       setLoading(false);
       setModalOpen(false);
       window.location.reload();
@@ -422,6 +420,7 @@ const Map = ({ parcels, center }) => {
         onUnmount={onUnmount}
         className="relative"
       >
+
         <div className="absolute w-40 top-20 left-0 bg-white/90 shadow-md">
           <div className="flex gap-3 max-w-36 items-center pl-2 pt-3">
             <div className="w-4 h-4 bg-green-800"></div>

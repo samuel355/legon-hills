@@ -98,16 +98,6 @@ const HeaderAlt = () => {
                   Profile
                 </Link>
               </DropdownMenuItem>
-              <DropdownMenuItem>
-                <Link
-                  href={"/profile#/my-listing"}
-                  className={`hover:text-primary font-medium text-base ${
-                    path == "/listings" && "text-primary font-extrabold"
-                  }`}
-                >
-                  My Listings
-                </Link>
-              </DropdownMenuItem>
               <DropdownMenuSeparator />
               <DropdownMenuItem className="text-red-700 text-base font-extrabold">
                 <SignOutButton>Logout</SignOutButton>
@@ -115,12 +105,7 @@ const HeaderAlt = () => {
             </DropdownMenuContent>
           </DropdownMenu>
         ) : (
-          <Link
-            className={`border px-8 py-2 rounded-md bg-primary text-white`}
-            href="/sign-in"
-          >
-            Login
-          </Link>
+          <></>
         )}
       </div>
 
@@ -147,76 +132,15 @@ const HeaderAlt = () => {
                   className={`hover:text-primary text-base ${
                     path == "/get-plot" && "text-primary font-semibold"
                   }`}
-                  onClick={() => router.push("/get-plot")}
+                  onClick={() => router.push("/contact-us")}
                 >
-                  Get Land
-                </button>
-              </DropdownMenuItem>
-              <DropdownMenuItem>
-                <button
-                  className={`hover:text-primary text-base ${
-                    path == "/get-home" && "text-primary font-semibold"
-                  }`}
-                  onClick={() => router.push("/get-home")}
-                >
-                  Get Property
+                  Contact Us
                 </button>
               </DropdownMenuItem>
             </DropdownMenuGroup>
 
             <DropdownMenuSeparator />
 
-            <DropdownMenuGroup>
-              <DropdownMenuSub>
-                <DropdownMenuSubTrigger
-                  asChildren
-                  className="text-base hover:text-primary"
-                >
-                  <Link href={''}>Our Sites</Link>
-                </DropdownMenuSubTrigger>
-                <DropdownMenuPortal>
-                  <DropdownMenuSubContent className="p-3">
-                    <DropdownMenuItem>
-                      <button
-                        className={`hover:text-primary text-base ${
-                          path == "/nthc" && "text-primary font-semibold"
-                        }`}
-                        onClick={() => router.push("/nthc")}
-                      >
-                        NTHC
-                      </button>
-                    </DropdownMenuItem>
-                    <DropdownMenuItem>
-                      <button
-                        className={`hover:text-primary text-base ${
-                          path == "/dar-es-salaam" &&
-                          "text-primary font-semibold"
-                        }`}
-                        onClick={() => router.push("/dar-es-salaam")}
-                      >
-                        Dar Es Salaam
-                      </button>
-                    </DropdownMenuItem>
-                    <DropdownMenuSeparator />
-                    <DropdownMenuItem>
-                      <button
-                        className={`hover:text-primary text-base ${
-                          path == "/trabuom" && "text-primary font-semibold"
-                        }`}
-                        onClick={() => router.push("/trabuom")}
-                      >
-                        Trabuom
-                      </button>
-                    </DropdownMenuItem>
-                  </DropdownMenuSubContent>
-                </DropdownMenuPortal>
-              </DropdownMenuSub>
-            </DropdownMenuGroup>
-            <DropdownMenuSeparator />
-            {/* <DropdownMenuItem className="flex justify-between items-center">
-              <UserButton />
-            </DropdownMenuItem>
-            <DropdownMenuSeparator /> */}
 
             {isSignedIn ? (
               // <UserButton />
@@ -243,39 +167,6 @@ const HeaderAlt = () => {
                       My Profile
                     </button>
                   </DropdownMenuItem>
-                  <DropdownMenuItem>
-                    <button
-                      className={`hover:text-primary text-base ${
-                        path == "/add-house-listing" &&
-                        "text-primary font-semibold"
-                      }`}
-                      onClick={() => router.push("/add-house-listing")}
-                    >
-                      Add Home Listing
-                    </button>
-                  </DropdownMenuItem>
-                  <DropdownMenuItem>
-                    <button
-                      className={`hover:text-primary text-base ${
-                        path == "/add-land-listing" &&
-                        "text-primary font-semibold"
-                      }`}
-                      onClick={() => router.push("/add-land-listing")}
-                    >
-                      Add Land Listing
-                    </button>
-                  </DropdownMenuItem>
-                  <DropdownMenuItem>
-                    <button
-                      className={`hover:text-primary text-base ${
-                        path == "/profile#/my-listing" &&
-                        "text-primary font-semibold"
-                      }`}
-                      onClick={() => router.push("/profile#/my-listing")}
-                    >
-                      My Listing
-                    </button>
-                  </DropdownMenuItem>
                   <DropdownMenuSeparator />
                   <DropdownMenuItem className="text-red-700 text-base font-extrabold">
                     <SignOutButton>Logout</SignOutButton>
@@ -283,14 +174,7 @@ const HeaderAlt = () => {
                 </DropdownMenuContent>
               </DropdownMenu>
             ) : (
-              <button
-                className={`hover:text-primary text-base text-primary/90 px-8 py-2 border mt-3 ${
-                  path == "/sign-in" && "text-primary font-semibold"
-                }`}
-                onClick={() => router.push("/sign-in")}
-              >
-                Login
-              </button>
+              <></>
             )}
           </DropdownMenuContent>
         </DropdownMenu>

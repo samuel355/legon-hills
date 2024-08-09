@@ -12,13 +12,13 @@ const Profile = () => {
       <div className="my-1 w-full px-10 pt-[7.5rem]">
         <h2 className="font-bold text-2xl mb-5 ml-1">Profile</h2>
         <UserProfile routing="hash">
-          <UserButton.UserProfilePage
+          {/* <UserButton.UserProfilePage
             label="My Listing"
             labelIcon={<Building2 className="h-4 w-4" />}
             url="my-listing"
           >
             <UserListing />
-          </UserButton.UserProfilePage>
+          </UserButton.UserProfilePage> */}
         </UserProfile>
       </div>
     </>
